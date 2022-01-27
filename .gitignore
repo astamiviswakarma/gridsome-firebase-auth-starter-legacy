@@ -109,3 +109,5 @@ src/.temp
 
 .env
 .env.*
+*.lock
+*-lock.json
