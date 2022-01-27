@@ -2,9 +2,16 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } f
 
 const actions = {
     initAction({ commit }) {
-        getAuth().onAuthStateChanged(user => {
-            if (user) {
-                commit("setUser", user);
+        getAuth().onAuthStateChanged(authUser => {
+            if (authUser) {
+                const { displayName, email, emailVerified, photoURL, uid } = authUser;
+                commit("setUser", {
+                    displayName,
+                    email,
+                    emailVerified,
+                    photoURL,
+                    uid
+                });
             } else {
                 commit("setUser", null);
             }
